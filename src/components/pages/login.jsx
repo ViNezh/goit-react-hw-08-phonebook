@@ -10,8 +10,11 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from 'components/redux/auth/authSlice';
+import { selectAuthError } from 'components/redux/auth/authSelectors';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -23,54 +26,76 @@ const SignupSchema = Yup.object().shape({
 
 const Login = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(selectAuthError);
+  const showError = isError => {
+    toast.error(isError, {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
   return (
-    <Flex bg="gray.100" align="center" justify="center">
-      <Box bg="white" p={6} rounded="md" w={64}>
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validationSchema={SignupSchema}
-          onSubmit={values => {
-            alert(JSON.stringify(values, null, 2));
-            dispatch(loginThunk(values));
-          }}
-        >
-          {({ handleSubmit, errors, touched }) => (
-            <form onSubmit={handleSubmit}>
-              <VStack spacing={4} align="flex-start">
-                <FormControl>
-                  <FormLabel htmlFor="email">Email Address</FormLabel>
-                  <Field
-                    as={Input}
-                    id="email"
-                    name="email"
-                    type="email"
-                    variant="filled"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.password && touched.password}>
-                  <FormLabel htmlFor="password">Password</FormLabel>
-                  <Field
-                    as={Input}
-                    id="password"
-                    name="password"
-                    type="password"
-                    variant="filled"
-                    autoComplete="off"
-                  />
-                  <FormErrorMessage>{errors.password}</FormErrorMessage>
-                </FormControl>
-                <Button type="submit" colorScheme="blue" width="full">
-                  Login
-                </Button>
-              </VStack>
-            </form>
-          )}
-        </Formik>
-      </Box>
-    </Flex>
+    <>
+      {isError ? (
+        showError(isError)
+      ) : (
+        <Flex bg="gray.100" align="center" justify="center">
+          <Box bg="white" p={6} rounded="md" w={64}>
+            <Formik
+              initialValues={{
+                email: '',
+                password: '',
+              }}
+              validationSchema={SignupSchema}
+              onSubmit={values => {
+                dispatch(loginThunk(values));
+              }}
+            >
+              {({ handleSubmit, errors, touched }) => (
+                <form onSubmit={handleSubmit}>
+                  <VStack spacing={4} align="flex-start">
+                    <FormControl>
+                      <FormLabel htmlFor="email">Email Address</FormLabel>
+                      <Field
+                        as={Input}
+                        id="email"
+                        name="email"
+                        type="email"
+                        variant="filled"
+                        placeholder="example@mail.com"
+                      />
+                      <FormErrorMessage>{errors.email}</FormErrorMessage>
+                    </FormControl>
+                    <FormControl
+                      isInvalid={!!errors.password && touched.password}
+                    >
+                      <FormLabel htmlFor="password">Password</FormLabel>
+                      <Field
+                        as={Input}
+                        id="password"
+                        name="password"
+                        type="password"
+                        variant="filled"
+                        autoComplete="off"
+                      />
+                      <FormErrorMessage>{errors.password}</FormErrorMessage>
+                    </FormControl>
+                    <Button type="submit" colorScheme="blue" width="full">
+                      Login
+                    </Button>
+                  </VStack>
+                </form>
+              )}
+            </Formik>
+          </Box>
+        </Flex>
+      )}
+    </>
   );
 };
 export default Login;

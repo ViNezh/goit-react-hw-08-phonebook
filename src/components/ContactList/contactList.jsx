@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './contactList.module.css';
+import { HiUserCircle } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
@@ -11,6 +12,15 @@ import { deleteContact, fetchContacts } from 'components/redux/phonebook/slice';
 import { useEffect } from 'react';
 import Loader from 'components/Loader/loader';
 import { ErrorComponent } from 'components/onError/onError';
+import {
+  Box,
+  Button,
+  Divider,
+  List,
+  ListIcon,
+  ListItem,
+  Text,
+} from '@chakra-ui/react';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -31,25 +41,28 @@ export const ContactList = () => {
     <>
       {isLoading && <Loader />}
       {error && <ErrorComponent error={error} />}
-      <ul className={css.contactList}>
+      <List className={css.contactList}>
         {filteredContacts.length > 0 &&
           filteredContacts.map(contact => (
-            <li key={contact.name}>
-              <div className={css.contactListItem}>
-                <span className={css.fieldName}>{contact.name}:</span>
-                <span className={css.fieldNumber}>{contact.phone}</span>
-                <button
-                  className={css.deleteBtn}
+            <ListItem key={contact.name} className={css.contactListItem}>
+              <ListIcon as={HiUserCircle} color="blue.500" />
+              <Box className={css.contactWrapper}>
+                <Text>{contact.name}:</Text>
+                <Text className={css.fieldNumber}>{contact.number}</Text>
+                <Button
+                  type="button"
+                  colorScheme="blue"
+                  size="xs"
                   onClick={() => {
                     dispatch(deleteContact(contact.id));
                   }}
                 >
                   Delete
-                </button>
-              </div>
-            </li>
+                </Button>
+              </Box>
+            </ListItem>
           ))}
-      </ul>
+      </List>
     </>
   );
 };

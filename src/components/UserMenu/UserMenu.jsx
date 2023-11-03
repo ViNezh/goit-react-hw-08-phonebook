@@ -1,3 +1,4 @@
+import { Box, Button, Text } from '@chakra-ui/react';
 import { selectAuthUser } from 'components/redux/auth/authSelectors';
 import { logOutThunk } from 'components/redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,12 +10,17 @@ const UserMenu = () => {
     dispatch(logOutThunk());
   };
   return (
-    <div>
-      <p>Welcome {user.name}</p>
-      <button type="button" onClick={handleClick}>
+    <Box display="flex" gap="3" alignItems="center">
+      <Text fontSize="lg">{user.email}</Text>
+      <Button
+        colorScheme="blue"
+        variant="solid"
+        size="sm"
+        onClick={handleClick}
+      >
         Logout
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
 export default UserMenu;

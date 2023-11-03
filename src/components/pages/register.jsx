@@ -56,7 +56,7 @@ const Registration = () => {
                   />
                   <FormErrorMessage>{errors.name}</FormErrorMessage>
                 </FormControl>
-                <FormControl isRequired>
+                <FormControl isInvalid={!!errors.email && touched.email}>
                   <FormLabel htmlFor="email">Email Address</FormLabel>
                   <Field
                     as={Input}
@@ -64,6 +64,7 @@ const Registration = () => {
                     name="email"
                     type="email"
                     variant="filled"
+                    placeholder="example@mail.com"
                   />
                 </FormControl>
                 <FormControl isInvalid={!!errors.password && touched.password}>

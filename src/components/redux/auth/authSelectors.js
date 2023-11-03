@@ -17,7 +17,7 @@ export const selectAuthToken = createSelector(
   authorisation => authorisation.token
 );
 
-export const selectAuthAuthentificated = createSelector(
+export const selectAuthentificated = createSelector(
   [selectAuth],
   authorisation => authorisation.authentificated
 );

@@ -1,24 +1,24 @@
-import { Link as ReactRouterLink } from 'react-router-dom';
-import { Link as ChakraLink, Flex, Tab, TabList, Tabs } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { Link as ChakraLink, Tab, TabList, Tabs } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { selectAuthAuthentificated } from 'components/redux/auth/authSelectors';
+import { selectAuthentificated } from 'components/redux/auth/authSelectors';
 import UserMenu from 'components/UserMenu/UserMenu';
 
 const Navigation = () => {
-  const isAuthentificated = useSelector(selectAuthAuthentificated);
+  const isAuthentificated = useSelector(selectAuthentificated);
   return (
     <header>
-      <Tabs isLazy>
+      <Tabs isLazy size="lg">
         <TabList>
-          <Tab>
-            <ChakraLink as={ReactRouterLink} to="/">
+          <Tab fontSize="2xl">
+            <ChakraLink as={Link} to="/">
               Home
             </ChakraLink>
           </Tab>
           {isAuthentificated ? (
             <>
-              <Tab>
-                <ChakraLink as={ReactRouterLink} to="/contacts">
+              <Tab fontSize="2xl">
+                <ChakraLink as={Link} to="/contacts">
                   Contacts
                 </ChakraLink>
               </Tab>
@@ -26,14 +26,14 @@ const Navigation = () => {
             </>
           ) : (
             <>
-              <Tab>
-                <ChakraLink as={ReactRouterLink} to="/registration">
-                  Registration
+              <Tab fontSize="2xl">
+                <ChakraLink as={Link} to="/login">
+                  Login
                 </ChakraLink>
               </Tab>
-              <Tab>
-                <ChakraLink as={ReactRouterLink} to="/login">
-                  Login
+              <Tab fontSize="2xl">
+                <ChakraLink as={Link} to="/registration">
+                  Registration
                 </ChakraLink>
               </Tab>
             </>
@@ -44,18 +44,3 @@ const Navigation = () => {
   );
 };
 export default Navigation;
-
-// <Flex align="center" justify="center" gap="20">
-//   <ChakraLink as={ReactRouterLink} to="/">
-//     Home
-//   </ChakraLink>
-//   <ChakraLink as={ReactRouterLink} to="/contacts">
-//     Contacts
-//   </ChakraLink>
-//   <ChakraLink as={ReactRouterLink} to="/registration">
-//     Registration
-//   </ChakraLink>
-//   <ChakraLink as={ReactRouterLink} to="/login">
-//     Login
-//   </ChakraLink>
-// </Flex>;

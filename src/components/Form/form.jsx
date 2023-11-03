@@ -45,7 +45,6 @@ const Form = () => {
           }}
           validationSchema={ContactSchema}
           onSubmit={(values, { resetForm }) => {
-            alert(JSON.stringify(values, null, 2));
             if (contactIsPresent(values.name)) {
               alert(`Contact with name "${values.name}" already exists.`);
               return;

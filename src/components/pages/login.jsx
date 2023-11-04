@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from 'components/redux/auth/authSlice';
 import { selectAuthError } from 'components/redux/auth/authSelectors';
+import ErrorComponent from 'components/onError/onError';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -26,9 +27,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const isError = useSelector(selectAuthError);
   return (
-    <>
+    <main>
       {isError ? (
-        alert(isError)
+        <ErrorComponent />
       ) : (
         <Flex bg="gray.100" align="center" justify="center">
           <Box bg="white" p={6} rounded="md" w={64}>
@@ -81,7 +82,7 @@ const Login = () => {
           </Box>
         </Flex>
       )}
-    </>
+    </main>
   );
 };
 export default Login;

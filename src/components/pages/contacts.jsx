@@ -9,18 +9,18 @@ const Contacts = () => {
   const isAuthentificated = useSelector(selectAuthentificated);
   return (
     isAuthentificated && (
-      <>
-        <Text mt="5" fontSize="3xl">
+      <main>
+        <Text mt="5" fontSize="3xl" align="center">
           New contact
         </Text>
         <Form />
 
-        <Text mt="5" fontSize="3xl">
+        <Text mt="5" fontSize="3xl" align="center">
           Contact list
         </Text>
         <Filter />
         <ContactList />
-      </>
+      </main>
     )
   );
 };

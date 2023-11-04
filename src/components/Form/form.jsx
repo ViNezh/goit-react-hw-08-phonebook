@@ -36,7 +36,7 @@ const Form = () => {
     return contacts.some(contact => contact.name === name);
   };
   return (
-    <Flex bg="gray.100" align="center" justify="center">
+    <Flex bg="white" align="center" justify="center">
       <Box bg="white" p={6} rounded="md" w={64}>
         <Formik
           initialValues={{

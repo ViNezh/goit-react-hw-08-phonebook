@@ -15,6 +15,7 @@ export const Filter = () => {
         type="text"
         variant="filled"
         value={value}
+        className={css.filterInput}
         onChange={evt => {
           dispatch(updateFilter(evt.currentTarget.value));
         }}

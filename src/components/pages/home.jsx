@@ -1,6 +1,10 @@
-import { Heading } from '@chakra-ui/react';
+import Hero from 'components/hero/hero';
 
 const Home = () => {
-  return <Heading>Hi, welcome to PHONEBOOK APP</Heading>;
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 };
 export default Home;

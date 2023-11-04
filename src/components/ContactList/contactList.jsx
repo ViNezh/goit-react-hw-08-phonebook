@@ -11,7 +11,7 @@ import {
 import { deleteContact, fetchContacts } from 'components/redux/phonebook/slice';
 import { useEffect } from 'react';
 import Loader from 'components/Loader/loader';
-import { ErrorComponent } from 'components/onError/onError';
+import ErrorComponent from 'components/onError/onError';
 import { Box, Button, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
 
 export const ContactList = () => {

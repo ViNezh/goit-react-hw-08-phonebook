@@ -7,7 +7,6 @@ import Navigation from './Navigation/Navigation';
 import Loader from './Loader/loader';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictRoute/RestrictedRoute';
-import { ToastContainer } from 'react-toastify';
 
 const Home = lazy(() => import('./pages/home'));
 const Contacts = lazy(() => import('./pages/contacts'));
@@ -17,15 +16,15 @@ const Login = lazy(() => import('./pages/login'));
 const appRoutes = [
   {
     path: '/',
-    element: (
-      <RestrictedRoute>
-        <Home />
-      </RestrictedRoute>
-    ),
+    element: <Home />,
   },
   {
     path: '/registration',
-    element: <Registration />,
+    element: (
+      <RestrictedRoute>
+        <Registration />
+      </RestrictedRoute>
+    ),
   },
   {
     path: '/login',
@@ -61,18 +60,6 @@ const App = () => {
           ))}
         </Routes>
       </Suspense>
-      <ToastContainer
-        position="top-center"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="color"
-      />
     </>
   );
 };

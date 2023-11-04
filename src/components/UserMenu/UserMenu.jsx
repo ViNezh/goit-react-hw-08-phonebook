@@ -11,7 +11,7 @@ const UserMenu = () => {
   };
   return (
     <Box display="flex" gap="3" alignItems="center">
-      <Text fontSize="lg">{user.email}</Text>
+      <Text fontSize="xl">{user.email}</Text>
       <Button
         colorScheme="blue"
         variant="solid"

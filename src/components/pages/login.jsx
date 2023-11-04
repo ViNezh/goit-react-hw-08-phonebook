@@ -10,8 +10,6 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginThunk } from 'components/redux/auth/authSlice';
 import { selectAuthError } from 'components/redux/auth/authSelectors';
@@ -27,22 +25,10 @@ const SignupSchema = Yup.object().shape({
 const Login = () => {
   const dispatch = useDispatch();
   const isError = useSelector(selectAuthError);
-  const showError = isError => {
-    toast.error(isError, {
-      position: 'top-center',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'colored',
-    });
-  };
   return (
     <>
       {isError ? (
-        showError(isError)
+        alert(isError)
       ) : (
         <Flex bg="gray.100" align="center" justify="center">
           <Box bg="white" p={6} rounded="md" w={64}>

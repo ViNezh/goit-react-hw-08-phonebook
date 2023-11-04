@@ -1,0 +1,32 @@
+.navigationBox {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.headerLink {
+    color: black;
+    border: 1px solid #3182ce;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    margin-right: 15px;
+
+    transition: all 0.3s;
+}
+
+a[aria-current="page"] {
+    border: 1px solid white;
+    background-color: #3182ce;
+    color: white;
+}
+
+.bottomLine {
+    border: 0;
+    border-top: 2px solid #007BFF;
+    margin: 10px 0;
+
+}

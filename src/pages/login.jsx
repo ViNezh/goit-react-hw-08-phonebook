@@ -11,9 +11,12 @@ import {
 } from '@chakra-ui/react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginThunk } from 'components/redux/auth/authSlice';
-import { selectAuthError } from 'components/redux/auth/authSelectors';
-import ErrorComponent from 'components/onError/onError';
+import { loginThunk } from '../redux/auth/authSlice';
+import {
+  selectAuthError,
+  selectAuthentificated,
+} from '../redux/auth/authSelectors';
+import ErrorComponent from '../components/onError/onError';
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
@@ -26,11 +29,11 @@ const SignupSchema = Yup.object().shape({
 const Login = () => {
   const dispatch = useDispatch();
   const isError = useSelector(selectAuthError);
+  const isAuthenificated = useSelector(selectAuthentificated);
   return (
     <main>
-      {isError ? (
-        <ErrorComponent />
-      ) : (
+      {isError && <ErrorComponent />}
+      {!isAuthenificated && (
         <Flex bg="gray.100" align="center" justify="center">
           <Box bg="white" p={6} rounded="md" w={64}>
             <Formik

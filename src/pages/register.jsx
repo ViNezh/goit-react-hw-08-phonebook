@@ -11,9 +11,9 @@ import {
 } from '@chakra-ui/react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerThunk } from 'components/redux/auth/authSlice';
-import { selectAuthError } from 'components/redux/auth/authSelectors';
-import ErrorComponent from 'components/onError/onError';
+import { registerThunk } from '../redux/auth/authSlice';
+import { selectAuthError } from '../redux/auth/authSelectors';
+import ErrorComponent from '../components/onError/onError';
 
 const SigninSchema = Yup.object().shape({
   name: Yup.string()

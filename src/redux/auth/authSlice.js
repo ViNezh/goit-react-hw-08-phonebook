@@ -5,7 +5,7 @@ import {
   fetchRefresh,
   fetchRegistration,
   setToken,
-} from 'components/API/authApi';
+} from '../../API/authApi';
 
 export const registerThunk = createAsyncThunk(
   'auth/registration',

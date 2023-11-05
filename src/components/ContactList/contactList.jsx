@@ -7,8 +7,8 @@ import {
   selectContactsError,
   selectContactsIsLoading,
   selectFilter,
-} from 'components/redux/phonebook/selectors';
-import { deleteContact, fetchContacts } from 'components/redux/phonebook/slice';
+} from '../../redux/phonebook/selectors';
+import { deleteContact, fetchContacts } from '../../redux/phonebook/slice';
 import { useEffect } from 'react';
 import Loader from 'components/Loader/loader';
 import ErrorComponent from 'components/onError/onError';

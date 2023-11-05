@@ -1,6 +1,6 @@
 import { Box, Button, Text } from '@chakra-ui/react';
-import { selectAuthUser } from 'components/redux/auth/authSelectors';
-import { logOutThunk } from 'components/redux/auth/authSlice';
+import { selectAuthUser } from '../../redux/auth/authSelectors';
+import { logOutThunk } from '../../redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const UserMenu = () => {

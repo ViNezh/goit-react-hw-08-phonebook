@@ -1,6 +1,6 @@
 import { Box, Center, IconButton, Text } from '@chakra-ui/react';
-import { selectAuthError } from 'components/redux/auth/authSelectors';
-import { selectContactsError } from 'components/redux/phonebook/selectors';
+import { selectAuthError } from '../../redux/auth/authSelectors';
+import { selectContactsError } from '../../redux/phonebook/selectors';
 import { RepeatIcon } from '@chakra-ui/icons';
 import React from 'react';
 import { useSelector } from 'react-redux';

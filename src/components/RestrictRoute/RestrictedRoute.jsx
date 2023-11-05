@@ -1,4 +1,4 @@
-import { selectAuthentificated } from 'components/redux/auth/authSelectors';
+import { selectAuthentificated } from '../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 

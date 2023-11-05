@@ -1,7 +1,7 @@
 import { NavLink as ReactRouterLink } from 'react-router-dom';
 import { Box, Link as ChakraLink } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { selectAuthentificated } from 'components/redux/auth/authSelectors';
+import { selectAuthentificated } from '../../redux/auth/authSelectors';
 import css from './Navigation.module.css';
 import UserMenu from 'components/UserMenu/UserMenu';
 

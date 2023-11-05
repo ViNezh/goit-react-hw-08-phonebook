@@ -11,8 +11,8 @@ import {
 } from '@chakra-ui/react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'components/redux/phonebook/slice';
-import { selectContacts } from 'components/redux/phonebook/selectors';
+import { addContact } from '../../redux/phonebook/slice';
+import { selectContacts } from '../../redux/phonebook/selectors';
 
 const phoneRegExp = RegExp(
   /^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/gm

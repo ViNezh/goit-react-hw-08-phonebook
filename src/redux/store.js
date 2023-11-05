@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 const authConfig = {
   key: 'authorisation',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'authentificated'],
 };
 
 export const rootReducer = combineReducers({
